@@ -1,0 +1,132 @@
+body {
+  position: absolute;
+  width: 1080px;
+  height: 1920px;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  background: #6300A7;
+  overflow: hidden; }
+  body.countdown .container {
+    background: #ffffff; }
+    body.countdown .container h1 {
+      color: #6300A7;
+      text-align: center; }
+    body.countdown .container .countdown-container {
+      width: 100%;
+      text-align: center;
+      padding: 250px 0; }
+      body.countdown .container .countdown-container .countdown-data {
+        background: #6300A7;
+        padding: 70px 50px;
+        border-radius: 25px; }
+      body.countdown .container .countdown-container,
+      body.countdown .container .countdown-container .tijdcontainer {
+        display: inline-block;
+        margin-right: 25px; }
+        body.countdown .container .countdown-container p,
+        body.countdown .container .countdown-container .tijdcontainer p {
+          color: #6300A7;
+          font-size: 50px; }
+          body.countdown .container .countdown-container p.countdown-data,
+          body.countdown .container .countdown-container .tijdcontainer p.countdown-data {
+            color: #ffffff;
+            font-size: 160px;
+            margin: 0; }
+  body.countdown .input {
+    color: #6300A7; }
+  body h1 {
+    font-weight: 400;
+    margin: 180px 30px 60px;
+    font-size: 90px; }
+    body h1 .span {
+      font-weight: 900 !important; }
+  body h2 {
+    font-size: 56px;
+    font-weight: 400; }
+  body .container {
+    height: 1920px;
+    width: 1080px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; }
+    body .container .product {
+      position: relative;
+      background: white;
+      padding: 12px 12px 12px 30px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      margin: 30px; }
+      body .container .product .afbeelding {
+        display: flex;
+        justify-content: center;
+        margin: 0 0 30px;
+        max-height: 350px; }
+      body .container .product .bottom-bar {
+        margin-top: auto;
+        display: flex;
+        flex-direction: row;
+        position: relative; }
+        body .container .product .bottom-bar .stemmen {
+          flex: 1 0 0;
+          display: inline-block; }
+          body .container .product .bottom-bar .stemmen p {
+            color: #6300A7;
+            font-size: 38px;
+            padding-top: 11px;
+            margin: 0; }
+            body .container .product .bottom-bar .stemmen p i {
+              font-size: 60px;
+              margin-right: 20px; }
+        body .container .product .bottom-bar .naam {
+          border-bottom-right-radius: 20px;
+          background: #6300A7;
+          flex: 2 0 0;
+          height: 100px; }
+          body .container .product .bottom-bar .naam::before {
+            content: '';
+            border-style: solid;
+            border-width: 100px 100px 0 0;
+            border-color: transparent #6300A7 transparent transparent;
+            position: absolute;
+            margin-left: -100px; }
+          body .container .product .bottom-bar .naam p {
+            font-size: 38px;
+            color: #ffffff;
+            margin: 0;
+            padding: 27px 0; }
+    body .container .chatberichten {
+      position: absolute;
+      height: 80px;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-top: 10px solid #450074;
+      background: #ffffff;
+      overflow: hidden; }
+      body .container .chatberichten .berichten-inner {
+        padding: 0 30px; }
+        body .container .chatberichten .berichten-inner p {
+          color: #6300A7;
+          font-size: 28px;
+          display: inline-block;
+          margin-right: 40px;
+          margin-left: 40px; }
+          body .container .chatberichten .berichten-inner p::before {
+            content: '';
+            background-image: url("../img/gh-logo.png");
+            width: 37px;
+            height: 53px;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: 80%;
+            margin-left: -50px;
+            top: 18px; }
+    body .container .input {
+      text-align: center; }
+      body .container .input h2,
+      body .container .input img {
+        display: inline-block; }

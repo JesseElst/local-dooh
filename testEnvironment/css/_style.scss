@@ -1,0 +1,180 @@
+$paars: #6300A7;
+$wit: #ffffff;
+
+body {
+   position   : absolute;
+   width      : 1080px;
+   height     : 1920px;
+   margin     : 0;
+   padding    : 0;
+   color      : $wit;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
+
+   &.countdown {
+      .container {
+         background: $wit;
+
+         h1 {
+            color     : $paars;
+            text-align: center;
+         }
+
+         .countdown-container {
+            .countdown-data {
+               background: $paars;
+               padding   : 10px;
+               font-size : 80px;
+            }
+
+            ,
+            .tijdcontainer {
+               display: inline-block;
+
+               p {
+                  color: $paars;
+
+                  &.countdown-data {
+                     color: $wit;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   h1 {
+      font-weight: 400;
+      margin     : 0;
+      padding    : 20px 0;
+      font-size  : 90px;
+
+      .span {
+         font-weight: 900;
+      }
+   }
+
+   h2 {
+      font-size  : 56px;
+      font-weight: 400;
+   }
+
+   .container {
+      height    : 1920px;
+      width     : 1080px;
+      position  : relative;
+      margin    : 0 auto;
+      background: $paars;
+      padding   : 80px 30px 0;
+
+      .product {
+         position      : relative;
+         background    : white;
+         padding       : 12px 12px 12px 30px;
+         border-radius : 20px;
+         display       : flex;
+         flex-direction: column;
+         margin        : 30px 0;
+
+         .afbeelding {
+            display        : flex;
+            justify-content: center;
+            margin         : 0 0 30px;
+            max-height     : 350px;
+         }
+
+         .bottom-bar {
+            margin-top    : auto;
+            // bottom        : 12px;
+            display       : flex;
+            flex-direction: row;
+            position      : relative;
+
+            .stemmen {
+               flex   : 1 0 0;
+               display: inline-block;
+
+               p {
+                  color      : $paars;
+                  font-size  : 38px;
+                  padding-top: 11px;
+                  margin     : 0;
+
+                  i {
+                     font-size   : 60px;
+                     margin-right: 20px;
+                  }
+               }
+            }
+
+            .naam {
+               border-bottom-right-radius: 20px;
+               background                : $paars;
+               flex                      : 2 0 0;
+               height                    : 100px;
+
+               &::before {
+                  content     : '';
+                  border-style: solid;
+                  border-width: 100px 100px 0 0;
+                  border-color: transparent $paars transparent transparent;
+                  position    : absolute;
+                  margin-left : -100px;
+               }
+
+               p {
+                  font-size: 38px;
+                  color    : $wit;
+                  margin   : 0;
+                  padding  : 27px 0;
+               }
+            }
+         }
+      }
+
+      .chatberichten {
+         position  : absolute;
+         height    : 80px;
+         left      : 0;
+         bottom    : 0;
+         top       : 1920px;
+         width     : 100%;
+         border-top: 10px solid darken($paars, 10%);
+         background: $wit;
+         overflow  : hidden;
+
+         .berichten-inner {
+            padding: 0 30px;
+
+            p {
+               color       : $paars;
+               font-size   : 28px;
+               display     : inline-block;
+               margin-right: 40px;
+               margin-left : 40px;
+
+               &::before {
+                  content          : '';
+                  background-image : url("../img/gh-logo.png");
+                  width            : 37px;
+                  height           : 53px;
+                  position         : absolute;
+                  background-repeat: no-repeat;
+                  background-size  : 80%;
+                  margin-left      : -50px;
+                  top              : 18px;
+               }
+            }
+         }
+      }
+
+      .input {
+         text-align: center;
+
+         h2,
+         img {
+            display: inline-block;
+         }
+      }
+   }
+}
