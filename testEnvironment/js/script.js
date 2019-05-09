@@ -2,6 +2,9 @@ var previous = null;
 var current = null;
 var blond = 0;
 var tripel = 0;
+var aantal;
+var getal = 5;
+var mandje = 1;
 // SLIDER
 // $(".stemmen").on("click", function() {
 //   var duration = 1;
@@ -18,22 +21,28 @@ var tripel = 0;
 // });
 
 
-
+if(pagina == 'home')
+    {
 // JSON DATA UITLEZEN
 $.getJSON("../antwoorden.json", function(json) {
+    aantal = json.chat.length - getal;
+    var obj = json.chat;
+    console.log(json.chat);
+    console.log(obj[0].user);
   // this will show the info it in firebug console
-  for (var i = 0; i < json.chat.length; i++) {
+  for (var i = aantal; i < json.chat.length; i++) {
     var counter = json.chat[i];
     if (counter.user.includes("#blond") && pagina == 'home') {
       blond++
       console.log(blond);
-      $("testje").effect("puff", "slow");
       document.getElementById('aantal_blond').innerHTML = blond;
+      aantal--
     } else if (counter.user.includes("#tripel") && pagina == 'home') {
       tripel++
       console.log(tripel);
       document.getElementById('aantal_tripel').innerHTML = tripel;
-    } else if(pagina == 'home' || pagina == 'countdown') {
+      aantal--
+    } else {
       const slide = document.createElement('div');
       slide.className = 'slide';
       slide.innerHTML = '<p>' + counter.user + '</p>';
@@ -58,10 +67,13 @@ $.getJSON("../antwoorden.json", function(json) {
 
   //console.log("hoevaak");
 });
+    }
 
-
+if(pagina == 'home')
+    {
 window.setInterval(function() {
   $.getJSON("../antwoorden.json", function(json) {
+      
     current = JSON.stringify(json);
     if (previous && current && previous !== current) {
       $('.berichten-inner').slick("unslick");
@@ -73,8 +85,8 @@ window.setInterval(function() {
       blond = 0;
       tripel = 0;
       //console.log(json.chat.length)
-
-      for (var b = 0; b < json.chat.length; b++) {
+      aantal = json.chat.length - 5;
+      for (var b = aantal; b < json.chat.length; b++) {
 
         var counter = json.chat[b];
         //console.log(counter.user);
@@ -128,7 +140,7 @@ window.setInterval(function() {
   });
   console.log("1seconden")
 }, 1000);
-
+    }
 
 
 
@@ -163,9 +175,24 @@ if (pagina == 'countdown') {
   }, 1000);
 }
 
+if(pagina == 'bericht')
+    {
 // JSON DATA UITLEZEN
 $.getJSON("../antwoorden.json", function(json) {
-  var laatstetwee = json.chat.length - 3;
+     for (var i = 0; i < json.chat.length; i++) {
+          var counter = json.chat[i];
+          var a = counter.user.split(":  ");
+          var user = a[0];
+          var text = a.slice(1, a.length)[0];
+       if(text.includes('#blond') || text.includes('#tripel')){
+           mandje++
+          
+     }   
+         
+         
+         
+     }
+  var laatstetwee = json.chat.length - mandje;
   // this will show the info it in firebug console
   for (var i = laatstetwee; i < json.chat.length; i++) {
     var counter = json.chat[i];
@@ -174,8 +201,82 @@ $.getJSON("../antwoorden.json", function(json) {
     var text = a.slice(1, a.length)[0];
     console.log(user);
     console.log(text);
+     if(text.includes('#blond') || text.includes('#tripel')){
+          console.log("doet ie");
+     }
+      else{
+           const slide = document.createElement('div');
+      slide.className = 'bericht';
+      slide.innerHTML =
+      '<div id="tekst">'+
+        '<p>' + text + '</p>'+
+      '</div>'+
+      '<div class="bottom-bar">'+
+        '<div class="stemmen"></div>'+
+        '<div class="naam"><p>' + user + '</p></div>'+
+      '</div>';
+      document.getElementById("bericht-slider").appendChild(slide);
+          
+      }
+   
+  }
+
+  // Slider code
+  //console.log("hekkie");
+  $('.berichtencontainer-inner').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      arrows: false,
+      autoplaySpeed: 3000,
+  });
+
+
+  //console.log("hoevaak");
+});
+    }
+        
+if(pagina == 'bericht')
+    {
+//scherm alleen berichten refresh
+window.setInterval(function() {
+  $.getJSON("../antwoorden.json", function(json) {
+      
+    current = JSON.stringify(json);
+    if (previous && current && previous !== current) {
+        mandje = 1;
+      $('.berichtencontainer-inner').slick("unslick");
+      console.log('refresh');
+        
+      console.log(previous);
+      console.log("dit is current");
+      console.log(current);
+      document.getElementById('bericht-slider').innerHTML = '';
+      //console.log(json.chat.length)
+         for (var i = 0; i < json.chat.length; i++) {
+             
+          var counter = json.chat[i];
+          var a = counter.user.split(":  ");
+          var user = a[0];
+          var text = a.slice(1, a.length)[0];
+       if(text.includes('#blond') || text.includes('#tripel')){
+           mandje++
+          }   
+          }
+  var laatstetwee = json.chat.length - mandje;
+        // this will show the info it in firebug console
+        
+    for (var i = laatstetwee; i < json.chat.length; i++) {
+    var counter = json.chat[i];
+    var a = counter.user.split(":  ");
+    var user = a[0];
+    var text = a.slice(1, a.length)[0];
+    console.log(user);
+    console.log(text);
 
     if((!text.includes('#blond') || !text.includes('#tripel')) && pagina == 'bericht'){
+        
       const slide = document.createElement('div');
       slide.className = 'bericht';
       slide.innerHTML =
@@ -190,16 +291,19 @@ $.getJSON("../antwoorden.json", function(json) {
     }
   }
 
-  // Slider code
-  //console.log("hekkie");
-  $('.berichtencontainer-inner').slick({
+
+
+    $('.berichtencontainer-inner').slick({
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
+      arrows: false,
       autoplaySpeed: 3000,
   });
-
-
-  //console.log("hoevaak");
-});
+    }
+    previous = current;
+  });
+  console.log("1seconden")
+}, 1000);
+}
