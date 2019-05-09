@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="css/slick.css"/>
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -16,16 +18,16 @@
       <div class="product">
 
         <div class="afbeelding">
-          <img src="img/kasteel.png" alt="">
+          <img src="img/latrappe.png" alt="">
         </div>
 
         <div class="bottom-bar">
 
           <div class="stemmen">
-            <p><i class="fas fa-fire"></i>323</p>
+            <p><i class="fas fa-fire"></i><span id="aantal_blond">0</span></p>
           </div>
           <div class="naam">
-            <p>Kasteel Tripel</p>
+            <p>La Trappe Blond (#blond)</p>
           </div>
 
         </div>
@@ -41,10 +43,10 @@
         <div class="bottom-bar">
 
           <div class="stemmen">
-            <p><i class="fas fa-fire"></i>323</p>
+            <p><i class="fas fa-fire"></i><span id="aantal_tripel">0</span></p>
           </div>
           <div class="naam">
-            <p>Kasteel Tripel</p>
+            <p>Kasteel Tripel (#tripel)</p>
           </div>
 
         </div>
@@ -52,8 +54,10 @@
       </div>
 
       <div class="input">
-        <h2>Laat je stem achter via Slack</h2>
-        <img src="img/slack.png" alt="">
+        <h2>Laat je stem achter in #Random</h2>
+         
+        <img id="testje" src="img/slack.png" alt="">
+           <h2> Stem #blond of #tripel</h2>
       </div>
 
       <div class="chatberichten">

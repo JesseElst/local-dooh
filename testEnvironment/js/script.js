@@ -1,22 +1,43 @@
  var previous = null;
     var current = null;
+var blond = 0;
+var tripel = 0;
 // SLIDER
-
+$( "aantal_blond" ).click(function() {
     
+  $( "aantal_blond" ).effect( "bounce", "slow" );
+});
+
+
+
   // JSON DATA UITLEZEN
   $.getJSON("../antwoorden.json", function(json) {
        // this will show the info it in firebug console
     for (var i = 0; i < json.chat.length; i++) {
       var counter = json.chat[i];
+        if(counter.user.includes("#blond"))
+                        {
+                            blond++
+                            console.log(blond);
+                            $( "testje" ).effect( "puff", "slow" );
+                            document.getElementById('aantal_blond').innerHTML = blond;
+                        }
+                     else if(counter.user.includes("#tripel"))
+                        {
+                            tripel++
+                            console.log(tripel);
+                             document.getElementById('aantal_tripel').innerHTML = tripel;
+                        }
+        else{
       const slide = document.createElement('div');
       slide.className = 'slide';
       slide.innerHTML = '<p>' + counter.user + '</p>';
       document.getElementById("plaatsen").appendChild(slide);
-       
+        }
     }
       
   // Slider code
-      console.log("hekkie");
+      //console.log("hekkie");
                 $('.berichten-inner').slick({
                   slidesToShow: 2,
                       autoplay: true,
@@ -30,7 +51,7 @@
                 });
         
               
-                console.log("hoevaak");
+                //console.log("hoevaak");
 });
   
                 
@@ -44,16 +65,35 @@ window.setInterval(function(){
                 console.log("dit is current");
                 console.log(current);
                 document.getElementById('plaatsen').innerHTML = '';
-                console.log(json.chat.length)
+                blond = 0;
+                tripel = 0;
+                //console.log(json.chat.length)
                 for (var b = 0; b < json.chat.length; b++) {
+                    
                     var counter = json.chat[b];
+                    //console.log(counter.user);
+                    if(counter.user.includes("#blond"))
+                        {   
+                            blond++
+                            console.log(blond);
+                            document.getElementById('aantal_blond').innerHTML = blond;
+                        }
+                     else if(counter.user.includes("#tripel"))
+                        {
+                            tripel++
+                            console.log(tripel);
+                             document.getElementById('aantal_tripel').innerHTML = tripel;
+                        }
+                    else{
                     const slide = document.createElement('div');
                     slide.className = 'slide';
                     slide.innerHTML = '<p>' + counter.user + '</p>';
               document.getElementById("plaatsen").appendChild(slide);
+                    }
                 }
                   
-                
+               
+               
                 $('.berichten-inner').slick({
                   slidesToShow: 2,
                       autoplay: true,
@@ -69,7 +109,7 @@ window.setInterval(function(){
             previous = current;
        // this will show the info it in firebug console
   });
-    console.log("5seconden")
+    console.log("1seconden")
 }, 1000);
 
 

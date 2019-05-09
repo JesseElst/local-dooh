@@ -10,8 +10,19 @@ class Command(object):
         }
 
     def handle_command(self, user, command):
-        response = "@" + user + "Bedankt voor je bericht!"
-        return response
+        response = command
+        print (response)
+        if response == '  weer':
+            return weather.myfunc()
+        elif response == '  #blond':
+            response = "bedankt voor je stem!"
+            return response
+        elif response == '  #tripel':
+            response = "Bedankt voor je stem!"
+            return response
+        else:
+            response = "Bedankt voor je bericht"
+            return response
 
     def gratis(self):
         return "Je weet dat het niet gratis is"

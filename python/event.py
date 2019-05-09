@@ -30,5 +30,6 @@ class Event:
             user = user.replace('@Greenhouse Dooh', '')
             print("Received command: " + command + " in channel: " + channel + " from user: " + user)
             addtext.toevoegen(command, channel, user)
-            response = self.command.handle_command(user, command)
+            gebruiker = user.split(":",1)[1]
+            response = self.command.handle_command(user, gebruiker)
             self.bot.slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
