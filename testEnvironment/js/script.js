@@ -1,115 +1,132 @@
- var previous = null;
-    var current = null;
+var previous = null;
+var current = null;
 var blond = 0;
 var tripel = 0;
 // SLIDER
-$( "aantal_blond" ).click(function() {
-    
-  $( "aantal_blond" ).effect( "bounce", "slow" );
-});
+// $(".stemmen").on("click", function() {
+//   var duration = 1;
+//   TweenMax.to(this, duration / 4, {
+//     y: -50,
+//     ease: Power2.easeOut
+//   });
+//   TweenMax.to(this, duration / 2, {
+//     y: 0,
+//     ease: Bounce.easeOut,
+//     delay: duration / 4
+//   });
+
+// });
 
 
 
-  // JSON DATA UITLEZEN
-  $.getJSON("../antwoorden.json", function(json) {
-       // this will show the info it in firebug console
-    for (var i = 0; i < json.chat.length; i++) {
-      var counter = json.chat[i];
-        if(counter.user.includes("#blond"))
-                        {
-                            blond++
-                            console.log(blond);
-                            $( "testje" ).effect( "puff", "slow" );
-                            document.getElementById('aantal_blond').innerHTML = blond;
-                        }
-                     else if(counter.user.includes("#tripel"))
-                        {
-                            tripel++
-                            console.log(tripel);
-                             document.getElementById('aantal_tripel').innerHTML = tripel;
-                        }
-        else{
+// JSON DATA UITLEZEN
+$.getJSON("../antwoorden.json", function(json) {
+  // this will show the info it in firebug console
+  for (var i = 0; i < json.chat.length; i++) {
+    var counter = json.chat[i];
+    if (counter.user.includes("#blond") && pagina == 'home') {
+      blond++
+      console.log(blond);
+      $("testje").effect("puff", "slow");
+      document.getElementById('aantal_blond').innerHTML = blond;
+    } else if (counter.user.includes("#tripel") && pagina == 'home') {
+      tripel++
+      console.log(tripel);
+      document.getElementById('aantal_tripel').innerHTML = tripel;
+    } else {
       const slide = document.createElement('div');
       slide.className = 'slide';
       slide.innerHTML = '<p>' + counter.user + '</p>';
       document.getElementById("plaatsen").appendChild(slide);
-        }
     }
-      
+  }
+
   // Slider code
-      //console.log("hekkie");
-                $('.berichten-inner').slick({
-                  slidesToShow: 2,
-                      autoplay: true,
-                      autoplaySpeed: 0,
-                      variableWidth: true,
-                      speed: 4000,
-                      cssEase:'linear',
-                      infinite: true,
-                      arrows: false,
-                      dots: false,
-                });
-        
-              
-                //console.log("hoevaak");
-});
-  
-                
-window.setInterval(function(){        
-  $.getJSON("../antwoorden.json", function(json) {
-        current = JSON.stringify(json);            
-            if (previous && current && previous !== current) {
-                $('.berichten-inner').slick("unslick");
-                console.log('refresh');
-                console.log(previous);
-                console.log("dit is current");
-                console.log(current);
-                document.getElementById('plaatsen').innerHTML = '';
-                blond = 0;
-                tripel = 0;
-                //console.log(json.chat.length)
-                for (var b = 0; b < json.chat.length; b++) {
-                    
-                    var counter = json.chat[b];
-                    //console.log(counter.user);
-                    if(counter.user.includes("#blond"))
-                        {   
-                            blond++
-                            console.log(blond);
-                            document.getElementById('aantal_blond').innerHTML = blond;
-                        }
-                     else if(counter.user.includes("#tripel"))
-                        {
-                            tripel++
-                            console.log(tripel);
-                             document.getElementById('aantal_tripel').innerHTML = tripel;
-                        }
-                    else{
-                    const slide = document.createElement('div');
-                    slide.className = 'slide';
-                    slide.innerHTML = '<p>' + counter.user + '</p>';
-              document.getElementById("plaatsen").appendChild(slide);
-                    }
-                }
-                  
-               
-               
-                $('.berichten-inner').slick({
-                  slidesToShow: 2,
-                      autoplay: true,
-                      autoplaySpeed: 0,
-                      variableWidth: true,
-                      speed: 4000,
-                      cssEase:'linear',
-                      infinite: true,
-                      arrows: false,
-                      dots: false,
-                });
-            }
-            previous = current;
-       // this will show the info it in firebug console
+  //console.log("hekkie");
+  $('.berichten-inner').slick({
+    slidesToShow: 2,
+    autoplay: true,
+    autoplaySpeed: 0,
+    variableWidth: true,
+    speed: 4000,
+    cssEase: 'linear',
+    infinite: true,
+    arrows: false,
+    dots: false,
   });
-    console.log("1seconden")
+
+
+  //console.log("hoevaak");
+});
+
+
+window.setInterval(function() {
+  $.getJSON("../antwoorden.json", function(json) {
+    current = JSON.stringify(json);
+    if (previous && current && previous !== current) {
+      $('.berichten-inner').slick("unslick");
+      console.log('refresh');
+      console.log(previous);
+      console.log("dit is current");
+      console.log(current);
+      document.getElementById('plaatsen').innerHTML = '';
+      blond = 0;
+      tripel = 0;
+      //console.log(json.chat.length)
+
+      for (var b = 0; b < json.chat.length; b++) {
+
+        var counter = json.chat[b];
+        //console.log(counter.user);
+        if (counter.user.includes("#blond") && pagina == 'home') {
+          blond++
+          console.log(blond);
+          document.getElementById('aantal_blond').innerHTML = blond;
+          TweenMax.fromTo(
+            '#vlam_blond', 3, {
+              scale: 1.5
+            }, {
+              scale: 1,
+              ease: Elastic.easeOut.config(1, 0.3)
+            }
+          )
+        } else if (counter.user.includes("#tripel") && pagina == 'home') {
+          tripel++
+          console.log(tripel);
+          document.getElementById('aantal_tripel').innerHTML = tripel;
+          TweenMax.fromTo(
+            '#vlam_tripel', 3, {
+              scale: 1.5
+            }, {
+              scale: 1,
+              ease: Elastic.easeOut.config(1, 0.3)
+            }
+          )
+        } else {
+          const slide = document.createElement('div');
+          slide.className = 'slide';
+          slide.innerHTML = '<p>' + counter.user + '</p>';
+          document.getElementById("plaatsen").appendChild(slide);
+        }
+      }
+
+
+
+      $('.berichten-inner').slick({
+        slidesToShow: 2,
+        autoplay: true,
+        autoplaySpeed: 0,
+        variableWidth: true,
+        speed: 4000,
+        cssEase: 'linear',
+        infinite: true,
+        arrows: false,
+        dots: false,
+      });
+    }
+    previous = current;
+  });
+  console.log("1seconden")
 }, 1000);
 
 
@@ -117,7 +134,7 @@ window.setInterval(function(){
 
 if (pagina == 'countdown') {
   // Set the date we're counting down to
-  var countDownDate = new Date("May 8, 2019 15:37:25").getTime();
+  var countDownDate = new Date("May 16, 2019 15:37:25").getTime();
 
   // Update the count down every 1 second
   var x = setInterval(function() {
