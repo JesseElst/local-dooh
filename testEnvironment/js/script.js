@@ -33,7 +33,7 @@ $.getJSON("../antwoorden.json", function(json) {
       tripel++
       console.log(tripel);
       document.getElementById('aantal_tripel').innerHTML = tripel;
-    } else {
+    } else if(pagina == 'home' || pagina == 'countdown') {
       const slide = document.createElement('div');
       slide.className = 'slide';
       slide.innerHTML = '<p>' + counter.user + '</p>';
@@ -162,3 +162,44 @@ if (pagina == 'countdown') {
     }
   }, 1000);
 }
+
+// JSON DATA UITLEZEN
+$.getJSON("../antwoorden.json", function(json) {
+  var laatstetwee = json.chat.length - 3;
+  // this will show the info it in firebug console
+  for (var i = laatstetwee; i < json.chat.length; i++) {
+    var counter = json.chat[i];
+    var a = counter.user.split(":  ");
+    var user = a[0];
+    var text = a.slice(1, a.length)[0];
+    console.log(user);
+    console.log(text);
+
+    if((!text.includes('#blond') || !text.includes('#tripel')) && pagina == 'bericht'){
+      const slide = document.createElement('div');
+      slide.className = 'bericht';
+      slide.innerHTML =
+      '<div id="tekst">'+
+        '<p>' + text + '</p>'+
+      '</div>'+
+      '<div class="bottom-bar">'+
+        '<div class="stemmen"></div>'+
+        '<div class="naam"><p>' + user + '</p></div>'+
+      '</div>';
+      document.getElementById("bericht-slider").appendChild(slide);
+    }
+  }
+
+  // Slider code
+  //console.log("hekkie");
+  $('.berichtencontainer-inner').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+  });
+
+
+  //console.log("hoevaak");
+});

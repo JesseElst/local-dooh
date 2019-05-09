@@ -13,6 +13,67 @@ body {
    background : $paars;
    overflow   : hidden;
 
+   &.berichten {
+      .container {
+         // display        : flex;
+         // align-items    : center;
+         // justify-content: center;
+         // flex-direction : column;
+         // background: $wit;
+         h1 {
+            // color     : $paars;
+            text-align: center;
+         }
+
+         .berichtcontainer {
+            // display: flex;
+            // justify-content: center;
+            // align-items    : center;
+            // flex-direction : column;
+            .bericht {
+               // display: flex;
+               // border : 10px solid $paars;
+               p {
+                  color: $paars;
+               }
+
+               #tekst {
+                  color     : $paars;
+                  font-size : 56px;
+                  max-height: none;
+
+                  p {
+                     margin: 120px 30px;
+                  }
+               }
+
+               .bottom-bar {
+                  justify-content: flex-end;
+
+                  .stemmen {
+                     flex: none;
+                  }
+
+                  .naam {
+                     flex: none;
+
+                     p {
+                        text-align: left;
+                        padding   : 27px 50px 27px 30px;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      p {
+         // margin    : 180px 30px 60px;
+         font-size : 56px;
+         text-align: center;
+      }
+   }
+
    &.countdown {
       .container {
          background: $wit;
@@ -80,6 +141,7 @@ body {
       margin  : 0 auto;
       overflow: hidden;
 
+      .bericht,
       .product {
          position      : relative;
          background    : white;
@@ -89,7 +151,8 @@ body {
          flex-direction: column;
          margin        : 30px;
 
-         .afbeelding {
+         .afbeelding,
+         .tekst {
             display        : flex;
             justify-content: center;
             margin         : 0 0 30px;
