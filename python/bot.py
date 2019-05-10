@@ -5,8 +5,8 @@ from slackclient import SlackClient
 
 class Bot(object):
     def __init__(self):
-        self.slack_client = SlackClient("xoxb-610183402276-604241967235-u1uZgT3NqLqonATTnAbLmJ6b")
-        self.bot_name = "dooh"
+        self.slack_client = SlackClient("xoxb-3941086709-632740533590-PoWhdcPoOnz7CaEcP9ciSHth")
+        self.bot_name = "greenhouse-dooh"
         self.bot_id = self.get_bot_id()
         self.user_name = self.get_user_name()
         if self.bot_id is None:
