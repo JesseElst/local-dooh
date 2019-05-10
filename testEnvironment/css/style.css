@@ -15,10 +15,10 @@ body {
     color: #6300A7; }
   body.berichten .container .berichtcontainer .bericht #tekst {
     color: #6300A7;
-    font-size: 56px;
     max-height: none; }
     body.berichten .container .berichtcontainer .bericht #tekst p {
-      margin: 120px 30px; }
+      margin: 120px 30px;
+      font-size: 76px; }
   body.berichten .container .berichtcontainer .bericht .bottom-bar {
     justify-content: flex-end; }
     body.berichten .container .berichtcontainer .bericht .bottom-bar .stemmen {
@@ -39,7 +39,7 @@ body {
     body.countdown .container .countdown-container {
       width: 100%;
       text-align: center;
-      padding: 250px 0; }
+      padding: 150px 0; }
       body.countdown .container .countdown-container .countdown-data {
         background: #6300A7;
         padding: 70px 50px;
@@ -61,7 +61,7 @@ body {
     color: #6300A7; }
   body h1 {
     font-weight: 400;
-    margin: 180px 30px 60px;
+    margin: 60px 30px;
     font-size: 90px; }
     body h1 .span {
       font-weight: 900 !important; }
